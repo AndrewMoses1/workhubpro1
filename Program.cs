@@ -7,7 +7,10 @@ builder.Services.AddHttpContextAccessor();
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-// ADD THE COSMOSDB CLIENT HERE WITH THE ACCOUNTENDPOINT
+builder.Services.AddSingleton<CosmosClient>(serviceProvider =>
+{
+    return new CosmosClient("AccountEndpoint=SECRET ENDPOINT");
+});
 
 var app = builder.Build();
 
